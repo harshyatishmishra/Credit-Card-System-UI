@@ -15,7 +15,6 @@ const creditCardForm = (props) => (
             <div className="col-sm-10">
                 <input className="col-md-12 form-control" type="text" name="cardholdername" required />
             </div>
-
         </div>
         <div className="form-group">
             <label className="col-sm-2 control-label" htmlFor="cardnumber">Card Number </label>
@@ -39,6 +38,5 @@ const creditCardForm = (props) => (
     </form>
 
 );
-
 
 export default creditCardForm;

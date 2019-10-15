@@ -6,8 +6,8 @@ const creditCardDetails = (props) => (
     <tr>
         <td>{props.cardholdername}</td>
         <td>{props.cardnumber}</td>
-        <td>{props.balance}</td>
-        <td>{props.cardlimit}</td>
+        <td>${props.balance}</td>
+        <td>${props.cardlimit}</td>
     </tr>
 
 

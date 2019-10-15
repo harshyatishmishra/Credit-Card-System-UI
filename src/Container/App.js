@@ -12,7 +12,9 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = { results: [], error: [] };
+    this.state = {
+      results: [], error: []
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.creditCardUrl = creditCardConstants.CREDIT_CARD_SERVER_URL;
   }
@@ -23,7 +25,9 @@ class App extends Component {
         console.log(response.data.data);
         this.setState({ results: response.data.data });
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        this.setState({ error: error.response.data.msg });
+      });
   }
 
   handleSubmit(event) {
@@ -34,7 +38,7 @@ class App extends Component {
     formData.forEach((value, key) => { inputData[key] = value });
     console.log(JSON.stringify(inputData));
 
-    var isExisting = this.state.results.findIndex(res => res.cardnumber == inputData.cardnumber);
+    var isExisting = this.state.results.findIndex(res => res.cardnumber === inputData.cardnumber);
     if (isExisting >= 0) {
       this.setState({ error: "Card Number already exists." });
       return;
@@ -42,12 +46,12 @@ class App extends Component {
 
     axios.post(this.creditCardUrl, inputData)
       .then(response => {
-        console.log(response);
-        this.setState({ results: response.data.data });
-        this.setState({ error: "" });
+        this.setState({
+          results: response.data.data,
+          error: ""
+        });
       })
       .catch(error => {
-        console.log(error);
         this.setState({ error: error.response.data.msg });
       });
 
@@ -72,7 +76,9 @@ class App extends Component {
     return (
       <div className="container pt-3" >
 
-        <CreditCardForm handleCreditCardFormSubmit={this.handleSubmit} errorMsg={error} />
+        <CreditCardForm
+          handleCreditCardFormSubmit={this.handleSubmit}
+          errorMsg={error} />
 
         <CreditCardDetailsHeader creditCardDetail={results} />
 
