@@ -32,7 +32,13 @@ class App extends Component {
     const formData = new FormData(event.target);
     var inputData = {};
     formData.forEach((value, key) => { inputData[key] = value });
-    console.log(JSON.stringify(inputData))
+    console.log(JSON.stringify(inputData));
+
+    var isExisting = this.state.results.findIndex(res => res.cardnumber == inputData.cardnumber);
+    if (isExisting >= 0) {
+      this.setState({ error: "Card Number already exists." });
+      return;
+    }
 
     axios.post(this.creditCardUrl, inputData)
       .then(response => {
