@@ -13,25 +13,25 @@ const creditCardForm = (props) => (
         <div className="form-group">
             <label className="col-sm-2 control-label" htmlFor="cardholdername">Name </label>
             <div className="col-sm-10">
-                <input className="col-md-12 form-control" type="text" name="cardholdername" required />
+                <input className="col-md-12 form-control" type="text" aria-label="Card Holder Name" name="cardholdername" tabIndex="1" required />
             </div>
         </div>
         <div className="form-group">
             <label className="col-sm-2 control-label" htmlFor="cardnumber">Card Number </label>
             <div className="col-sm-10">
-                <input className="col-md-12 form-control" type="number" name="cardnumber" required />
+                <input className="col-md-12 form-control" type="number" name="cardnumber" aria-label="Card Number" tabIndex="2" maxLength="19" required />
             </div>
         </div>
         <div className="form-group">
             <label className="col-sm-2 control-label" htmlFor="cardlimit">Limit </label>
             <div className="col-sm-10">
-                <input className="col-md-12 form-control" type="number" name="cardlimit" required />
+                <input className="col-md-12 form-control" type="number" name="cardlimit" aria-label="Card Limit" tabIndex="3" required />
             </div>
         </div>
 
         <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-                <button className="btn btn-primary btn-sm btn-block">Add</button>
+                <button className="btn btn-primary btn-sm btn-block" tabIndex="4">Add</button>
             </div>
         </div>
         {props.errorMsg}
