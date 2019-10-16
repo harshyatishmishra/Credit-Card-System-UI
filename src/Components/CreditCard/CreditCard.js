@@ -55,8 +55,12 @@ class CreditCard extends Component {
         let results = [], error = [];
         if (this.state.results) {
             results = this.state.results.map(detail => {
-                return <CreditCardDetails key={detail.cardnumber} cardholdername={detail.cardholdername} cardnumber={detail.cardnumber}
-                    cardlimit={detail.cardlimit} balance={detail.balance} />
+                return <CreditCardDetails
+                    key={detail.cardnumber}
+                    cardholdername={detail.cardholdername}
+                    cardnumber={detail.cardnumber}
+                    cardlimit={detail.cardlimit}
+                    balance={detail.balance} />
             });
         }
 
